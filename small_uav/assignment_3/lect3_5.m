@@ -1,6 +1,7 @@
 function lect3_5
 %%
-close all; clc
+close all; clc; clear x y z m
+format compact
 % FL, FR, BL, BR, Avionics
 x = [0.13;0.13;-0.13;-0.13;0.0];
 y = [-0.22;0.22;-0.22;0.22;0];

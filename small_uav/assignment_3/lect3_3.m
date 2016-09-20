@@ -11,9 +11,4 @@ north_pos_at_impact = out.north_m(idx)
 min_ground_speed = min(out.groundspeed_mps)
 max_ground_speed = max(out.groundspeed_mps)
 
-figure
-plot(out.time_s, out.alt_m); xlabel('time, s'); ylabel('alt, m')
-grid on
-
-
 end
