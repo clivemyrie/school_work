@@ -70,8 +70,10 @@ function out = uavsim_forces_moments(uu, P)
     C_ell = 0;
     C_n   = 0;
 
-    % Create and combine Forces    
-    f_grav_b = zeros(3,1);
+    % Create and combine Forces
+    f_grav_ned = P.mass * [0; 0; P.gravity]; % Newtons
+    R_ned2b = eulerToRotationMatrix(phi,theta,psi)
+    f_grav_b = R_ned2b*f_grav_ned;
     f_aero_b = zeros(3,1);
     f_prop_b = zeros(3,1);
     f_b = f_grav_b + f_aero_b + f_prop_b;
