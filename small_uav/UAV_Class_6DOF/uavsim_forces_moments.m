@@ -57,7 +57,7 @@ R_ned2b = eulerToRotationMatrix(phi,theta,psi);
 wind_b = R_ned2b*wind_ned;
 
 % compute airspeed Va, angle-of-attack alpha, side-slip beta
-[Va, alpha, beta] = makeVaAlphaBeta(vg_b - wind_b)
+[Va, alpha, beta] = makeVaAlphaBeta(vg_b - wind_b);
 
 % Longitudinal Aero Coefficients
 C_L = P.C_L_0 + (P.C_L_alpha * alpha) + (P.C_L_q*P.c/2/Va*q) + (P.C_L_delta_e*delta_e);
@@ -72,7 +72,7 @@ C_n   = P.C_n_0 + (P.C_n_beta*beta) + (P.C_n_p*P.b/2/Va*p) + (P.C_n_r*P.b/2/Va*r
 % Create and combine Forces
 f_grav_ned = P.mass * [0; 0; P.gravity]; % Newtons
 
-f_grav_b = R_ned2b*f_grav_ned
+f_grav_b = R_ned2b*f_grav_ned;
 f_aero_b = 0.5*P.rho*Va*Va*P.S_wing*[-C_D*cos(alpha) + C_L*sin(alpha);C_Y;-C_D*sin(alpha)-C_L*cos(alpha)];
 f_prop_b = zeros(3,1);
 f_b = f_grav_b + f_aero_b + f_prop_b;
