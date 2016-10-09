@@ -14,7 +14,7 @@ P = init_uavsim_params;
 
 % Compute the trim condition and set trim parameters in P
 % (Uncomment when necessary)
-% P = compute_longitudinal_trim(P);
+[P, trim_solution] = compute_longitudinal_trim(P);
 
 % Generate linear response models to be used in autopilot development
 % (Uncomment when necessary)

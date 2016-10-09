@@ -1,4 +1,4 @@
-function P = compute_longitudinal_trim(P)
+function [P, trim_solution] = compute_longitudinal_trim(P)
 % Compute longitudinal trim condition for an aircraft in uavsim.
 % Specifically, uses a minimization routine to find the angle-of-attack,
 % elevator and throttle values that minimize the magnitudes of pitching
@@ -57,6 +57,8 @@ function P = compute_longitudinal_trim(P)
     %   would result in the following two equivalent function calls:
     %         Jcost = cost_function(trim_test,P);
     %         Jcost = cost_func(trim_test);  % calls: cost_function(trim_test,P), using the P in the workspace. 
+    
+    clear trim_solution
 
     % Extract "trim" values from fminsearch output
     alphaStar = trim_condition(1);
@@ -97,13 +99,20 @@ function P = compute_longitudinal_trim(P)
         fprintf('  Longitudinal trim: alpha=%.4f deg, de=%.4f deg, dt=%.4f\n', ...
                   alphaStar*180/pi, delta_eStar*180/pi, delta_tStar);
         fprintf('******************************************************************\n');
+        trim_solution.alpha = alphaStar*180/pi;
+        trim_solution.delta_e = delta_eStar*180/pi;
+        trim_solution.delta_t = delta_tStar;
+        trim_solution.valid = 1;
     else
         fprintf('******************************************************************\n');
         fprintf('  WARNING: Valid trim condition NOT found, Jcost = %e\n',Jcost);
         fprintf('  Result invalid: alpha=%.4f deg, de=%.4f deg, dt=%.4f\n', ...
                   alphaStar*180/pi, delta_eStar*180/pi, delta_tStar);
         fprintf('******************************************************************\n');
-        error('Trim condition not found')
+        %error('Trim condition not found')
+        disp('Trim condition not found')
+        
+        trim_solution.valid = 0;
     end
         
 end
@@ -130,22 +139,25 @@ function [Jcost, x, deltas] = cost_function(trim_test,P)
     x(1) = P.pn0;    % North position, m
     x(2) = P.pe0;    % East position, m
     x(3) = P.pd0;    % Down position, m
-    x(4) = <code here>;  % u (Hint: Use P.Va0 and alpha)
+    x(4) = P.Va0 * cos(alpha);  % u (Hint: Use P.Va0 and alpha)
     x(5) = 0;            % v
-    x(6) = <code here>;  % w
+    x(6) = P.Va0 * sin(alpha);  % w
     x(7) = 0;            % phi
-    x(8) = <code here>;  % theta
+    x(8) = alpha;  % theta
     x(9) = P.psi0;       % psi
     x(10)= 0;            % p
-    x(11)= <code here>;  % q
+    x(11)= 0;  % q
     x(12)= 0;            % r
 
     time = 0;
 
-    % Call uavsim_forces_and_moments and generate Jcost appropriately    
-    uu = <code here>; % input to uavsim_force_moments
-    f_and_m = <code here>; % call uavsim_forces_moments routine
-    Jcost = <code here>;
+    % Call uavsim_forces_and_moments and generate Jcost appropriately
+    uu = [wind_ned;deltas;x;time]; % input to uavsim_force_moments
+    f_and_m = uavsim_forces_moments(uu, P); % call uavsim_forces_moments routine
+    fx = f_and_m(1);
+    fz = f_and_m(3);
+    m = f_and_m(5);
+    Jcost = fx*fx + fz*fz + m*m;
 
     % Propeller force is non-linear with delta_t.  Results outside of [0 1]
     % are invalid, so bump up Jcost outside of the valid ranges.

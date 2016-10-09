@@ -49,7 +49,7 @@ function out = uavsim_control(uu,P)
     % Initialize controls to trim (to be set with autopilot logic)
     %delta_e=P.delta_e0;
     delta_e=P.delta_e0;
-    delta_a=P.delta_a0 + 1*pi/180;
+    delta_a=P.delta_a0;
     delta_r=P.delta_r0;
     delta_t=P.delta_t0;
     

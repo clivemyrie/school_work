@@ -74,12 +74,12 @@ f_grav_ned = P.mass * [0; 0; P.gravity]; % Newtons
 
 f_grav_b = R_ned2b*f_grav_ned;
 f_aero_b = 0.5*P.rho*Va*Va*P.S_wing*[-C_D*cos(alpha) + C_L*sin(alpha);C_Y;-C_D*sin(alpha)-C_L*cos(alpha)];
-f_prop_b = zeros(3,1);
+f_prop_b = [P.rho * P.C_prop * P.S_prop * (Va+delta_t*(P.k_motor - Va)) * (delta_t*(P.k_motor - Va));0;0];
 f_b = f_grav_b + f_aero_b + f_prop_b;
 
 % Create and combine Moments
 m_aero_b = 0.5 * P.rho * Va * Va * P.S_wing * [P.b*C_ell;P.c*C_m; P.b*C_n];
-m_prop_b = zeros(3,1);
+m_prop_b = [-P.k_Tp*((P.k_omega*delta_t)^2);0;0];
 m_b = m_aero_b + m_prop_b;
 
 % Compile function output
