@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.66"
+    ComputedModelVersion    "1.70"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -32,7 +32,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [121.0, 36.0, 1015.0, 650.0]
+      Location		      [126.0, 29.0, 1165.0, 748.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,18 +55,18 @@ Model {
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkSubsys"
-	  LoadSaveID		  "198"
-	  Extents		  [959.0, 445.0]
+	  ViewObjType		  "SimulinkTopLevel"
+	  LoadSaveID		  "0"
+	  Extents		  [1109.0, 537.0]
 	  ZoomFactor		  [1.0]
-	  Offset		  [0.0, 0.0]
+	  Offset		  [13.266615140194403, -22.295238095238005]
 	}
 	Object {
 	  $ObjectID		  6
 	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "121"
-	  Extents		  [1332.0, 567.0]
+	  Extents		  [1109.0, 537.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [0.0, 0.0]
 	}
@@ -80,9 +80,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Sun Oct 09 17:08:03 2016"
-  RTWModifiedTimeStamp	  397933670
-  ModelVersionFormat	  "1.%<AutoIncrement:66>"
+  LastModifiedDate	  "Tue Oct 11 15:34:40 2016"
+  RTWModifiedTimeStamp	  398100880
+  ModelVersionFormat	  "1.%<AutoIncrement:70>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -985,8 +985,8 @@ Model {
   }
   System {
     Name		    "uavsim"
-    Location		    [505, 179, 1542, 883]
-    Open		    off
+    Location		    [126, 29, 1291, 777]
+    Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1013,7 +1013,7 @@ Model {
       Variant		      off
       System {
 	Name			"Autopilot:\nFlight Control"
-	Location		[86, 52, 1046, 766]
+	Location		[121, 36, 1136, 686]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -1341,7 +1341,7 @@ Model {
       Variant		      off
       System {
 	Name			"Forces & Moments"
-	Location		[-8, 0, 1374, 744]
+	Location		[121, 36, 1136, 686]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2004,7 +2004,7 @@ Model {
       System {
 	Name			"Trajectory\nCommands"
 	Location		[121, 36, 1136, 686]
-	Open			on
+	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2348,7 +2348,7 @@ Model {
       Variant		      off
       System {
 	Name			"Visualiztion \n& Output"
-	Location		[121, 36, 1136, 686]
+	Location		[126, 29, 1291, 777]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200

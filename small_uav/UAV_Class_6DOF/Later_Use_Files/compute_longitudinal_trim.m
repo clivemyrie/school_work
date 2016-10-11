@@ -22,8 +22,9 @@ function [P, trim_solution] = compute_longitudinal_trim(P)
     % Initial "guess" of trim condition
     alphaStar = 0;    % Angle of attack, radians
     delta_eStar = 0;  % Elevator deflection, radians
+    delta_aStar = 0;  % Aileron deflection, radians
     delta_tStar = 0;  % Throttle deflection
-    initial_guess = [alphaStar delta_eStar delta_tStar];
+    initial_guess = [alphaStar delta_eStar delta_aStar delta_tStar];
     
     % Vary trim guesses to find values which minimize cost_function()
     % Uses Matlab routine fminsearch():
@@ -63,7 +64,9 @@ function [P, trim_solution] = compute_longitudinal_trim(P)
     % Extract "trim" values from fminsearch output
     alphaStar = trim_condition(1);
     delta_eStar = trim_condition(2);
-    delta_tStar = trim_condition(3);
+    delta_aStar = trim_condition(3);
+    delta_tStar = trim_condition(4);
+    
     
     % Re-run cost function at trim_condition to acquire full state vector (x) 
     % and control deflections (u) at trim condition
@@ -94,25 +97,33 @@ function [P, trim_solution] = compute_longitudinal_trim(P)
         
     % Display whether a valid trim was found
     if Jcost < 1e-6 % Goal is Jcost<1e-24, but any "small" Jcost (e.g. Jcost<1e-6) is okay.
-        fprintf('******************************************************************\n');
-        fprintf('  Trim condition found, Jcost = %e\n',Jcost);
-        fprintf('  Longitudinal trim: alpha=%.4f deg, de=%.4f deg, dt=%.4f\n', ...
-                  alphaStar*180/pi, delta_eStar*180/pi, delta_tStar);
-        fprintf('******************************************************************\n');
+%         fprintf('******************************************************************\n');
+%         fprintf('  Trim condition found, Jcost = %e\n',Jcost);
+%         fprintf('  Longitudinal trim: alpha=%.4f deg, de=%.4f deg, da=%.4f deg, dt=%.4f\n', ...
+%                   alphaStar*180/pi, delta_eStar*180/pi, delta_aStar*180/pi, delta_tStar);
+%         fprintf('******************************************************************\n');
         trim_solution.alpha = alphaStar*180/pi;
         trim_solution.delta_e = delta_eStar*180/pi;
+        trim_solution.delta_a = delta_aStar*180/pi;
         trim_solution.delta_t = delta_tStar;
+        
         trim_solution.valid = 1;
+        trim_solution.cost = Jcost;
+        
+%         P.alpha0 = alphaStar;
+%         P.delta_e0 = delta_eStar;
+%         P.delta_t0 = delta_tStar;
     else
-        fprintf('******************************************************************\n');
-        fprintf('  WARNING: Valid trim condition NOT found, Jcost = %e\n',Jcost);
-        fprintf('  Result invalid: alpha=%.4f deg, de=%.4f deg, dt=%.4f\n', ...
-                  alphaStar*180/pi, delta_eStar*180/pi, delta_tStar);
-        fprintf('******************************************************************\n');
-        %error('Trim condition not found')
-        disp('Trim condition not found')
+%         fprintf('******************************************************************\n');
+%         fprintf('  WARNING: Valid trim condition NOT found, Jcost = %e\n',Jcost);
+%         fprintf('  Result invalid: alpha=%.4f deg, de=%.4f deg, da=%.4f deg, dt=%.4f\n', ...
+%                   alphaStar*180/pi, delta_eStar*180/pi, delta_aStar*180/pi, delta_tStar);
+%         fprintf('******************************************************************\n');
+%         error('Trim condition not found')
+%         disp('Trim condition not found')
         
         trim_solution.valid = 0;
+        trim_solution.cost = Jcost;
     end
         
 end
@@ -124,14 +135,16 @@ function [Jcost, x, deltas] = cost_function(trim_test,P)
     % Extract values from trim_test
     alpha=trim_test(1);
     delta_e=trim_test(2);
-    delta_t=trim_test(3);
+    delta_a=trim_test(3);
+    delta_t=trim_test(4);
+    
 
     % Trimmer will assume zero wind
     wind_ned = zeros(3,1);
     
     % Construct control deflections vector
     %   delta_a and delta_r are zeroed.
-    deltas = [delta_e; 0; 0; delta_t];
+    deltas = [delta_e; delta_a; 0; delta_t];
 
     % Construct state vector
     % Need to retain original position and yaw for initialization.
@@ -156,8 +169,9 @@ function [Jcost, x, deltas] = cost_function(trim_test,P)
     f_and_m = uavsim_forces_moments(uu, P); % call uavsim_forces_moments routine
     fx = f_and_m(1);
     fz = f_and_m(3);
+    ell = f_and_m(4);
     m = f_and_m(5);
-    Jcost = fx*fx + fz*fz + m*m;
+    Jcost = fx*fx + fz*fz + m*m + ell*ell;
 
     % Propeller force is non-linear with delta_t.  Results outside of [0 1]
     % are invalid, so bump up Jcost outside of the valid ranges.
