@@ -39,14 +39,15 @@ function out = uavsim_wind(uu, P)
     % Your code goes below...
     
     % Generate steady wind vector in NED coordinates
-    ws_ned = zeros(3,1);
+    % For lect6_5
+    ws_ned = [P.wind_n; P.wind_e; P.wind_d];
 
     % Compute DCMs
     R_ned2b = eulerToRotationMatrix(phi,theta,psi);
 
     % compute wind vector in the inertial frame
     %   ws_ned & gust_b -> wind_ned
-    wind_ned = zeros(3,1);
+    wind_ned = ws_ned + (R_ned2b')*gust_b;
 
     % Compile function output
     out = [wind_ned]; % Length 3

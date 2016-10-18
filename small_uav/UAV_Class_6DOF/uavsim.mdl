@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.70"
+    ComputedModelVersion    "1.73"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -32,7 +32,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [126.0, 29.0, 1165.0, 748.0]
+      Location		      [122.0, 32.0, 1165.0, 748.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -80,9 +80,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 11 15:34:40 2016"
-  RTWModifiedTimeStamp	  398100880
-  ModelVersionFormat	  "1.%<AutoIncrement:70>"
+  LastModifiedDate	  "Tue Oct 18 13:14:21 2016"
+  RTWModifiedTimeStamp	  398688984
+  ModelVersionFormat	  "1.%<AutoIncrement:73>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -184,7 +184,7 @@ Model {
 	  $ObjectID		  9
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "20"
+	  StopTime		  "50"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -985,7 +985,7 @@ Model {
   }
   System {
     Name		    "uavsim"
-    Location		    [126, 29, 1291, 777]
+    Location		    [122, 32, 1287, 780]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
