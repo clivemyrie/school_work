@@ -24,8 +24,9 @@ function Gcl = PI_rateFeedback_TF(Gplant,kp,ki,kd)
 s=tf('s');
 
 % Closed Loop Transfer Function from Input to Output
-Ginner = <code here>;
-Gcl = <code here>;
+Ginner = Gplant / (1 + kd*s*Gplant);
+star = (kp + ki/s);
+Gcl = (star)*Ginner / (1 + (star)*Ginner);
 
 % Minimum Realization (numerically cancel matching poles and zeros)
-Gcl      = minreal(Gcl);
+Gcl = minreal(Gcl);

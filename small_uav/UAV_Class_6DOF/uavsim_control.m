@@ -53,12 +53,16 @@ delta_a=P.delta_a0;
 delta_r=P.delta_r0;
 delta_t=P.delta_t0;
 
-% Initialize autopilot commands (may be overwritten with autopilot logic)
-phi_c = 0;
-theta_c = 0;
 
 % Set "first-time" flag, which is used to initialize autopilot integrators
 firstTime=(time==0);
+
+% Initialize autopilot commands (may be overwritten with autopilot logic)
+phi_c = 45*pi/180; % For lect7_5
+delta_a = PIR_roll_hold(phi_c, phi_hat, p_hat, firstTime, P); % For lect7_5
+theta_c = 0;
+
+
 
 % Flight control logic
 
@@ -211,6 +215,46 @@ ki = P.altitude_ki;
 kd = P.altitude_kd;
 u_lower_limit = -P.theta_max;
 u_upper_limit = +P.theta_max;
+
+% Initialize integrator (e.g. when t==0)
+persistent error_int;
+if( init_flag )
+    error_int = 0;
+end
+
+% Perform "PI with rate feedback"
+error = y_c - y;  % Error between command and response
+error_int = error_int + P.Ts*error; % Update integrator
+u = kp*error + ki*error_int - kd*y_dot;
+
+% Output saturation & integrator clamping
+%   - Limit u to u_upper_limit & u_lower_limit
+%   - Clamp if error is driving u past limit
+if u > u_upper_limit
+    u = u_upper_limit;
+    if ki*error>0
+        error_int = error_int - P.Ts*error;
+    end
+elseif u < u_lower_limit
+    u = u_lower_limit;
+    if ki*error<0
+        error_int = error_int - P.Ts*error;
+    end
+end
+
+end
+
+function u = PIR_roll_hold(phi_c, phi_hat, p_hat, init_flag, P)
+
+% Set up PI with rate feedback
+y_c = phi_c;   % Command
+y = phi_hat;   % Feedback
+y_dot = 0;   % Rate feedback
+kp = P.roll_kp;
+ki = P.roll_ki;
+kd = P.roll_kd;
+u_lower_limit = -P.delta_a_max;
+u_upper_limit = +P.delta_a_max;
 
 % Initialize integrator (e.g. when t==0)
 persistent error_int;

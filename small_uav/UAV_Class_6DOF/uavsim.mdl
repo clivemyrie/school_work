@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.73"
+    ComputedModelVersion    "1.77"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -32,7 +32,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [122.0, 32.0, 1165.0, 748.0]
+      Location		      [122.0, 32.0, 1165.0, 745.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -57,7 +57,7 @@ Model {
 	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [1109.0, 537.0]
+	  Extents		  [1109.0, 534.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [13.266615140194403, -22.295238095238005]
 	}
@@ -80,9 +80,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 18 13:14:21 2016"
-  RTWModifiedTimeStamp	  398688984
-  ModelVersionFormat	  "1.%<AutoIncrement:73>"
+  LastModifiedDate	  "Tue Oct 25 14:41:36 2016"
+  RTWModifiedTimeStamp	  399300321
+  ModelVersionFormat	  "1.%<AutoIncrement:77>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -184,7 +184,7 @@ Model {
 	  $ObjectID		  9
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "50"
+	  StopTime		  "20"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -985,7 +985,7 @@ Model {
   }
   System {
     Name		    "uavsim"
-    Location		    [122, 32, 1287, 780]
+    Location		    [122, 32, 1287, 777]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -2348,7 +2348,7 @@ Model {
       Variant		      off
       System {
 	Name			"Visualiztion \n& Output"
-	Location		[126, 29, 1291, 777]
+	Location		[122, 32, 1287, 780]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200

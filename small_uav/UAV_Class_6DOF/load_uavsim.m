@@ -18,8 +18,8 @@ P = init_uavsim_params;
 
 % Generate linear response models to be used in autopilot development
 % (Uncomment when necessary)
-% models = compute_tf_models(P);
+models = compute_tf_models(P);
 
 % Compute autopilot gains
 % (Uncomment when necessary)
-% P = compute_autopilot_gains(models,P);
+P = compute_autopilot_gains(models,P);
