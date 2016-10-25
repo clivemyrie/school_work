@@ -1,8 +1,8 @@
 function lect6_4
 %% 
 %clc; clear all; close all
-%load_uavsim
-%P.wind_e = 5;
+load_uavsim
+P.wind_e = 5;
 % Run simulation
 
 %%
