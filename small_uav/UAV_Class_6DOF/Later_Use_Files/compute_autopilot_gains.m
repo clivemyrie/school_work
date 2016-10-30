@@ -36,9 +36,9 @@ P.roll_ki = 0.0;
 
 %% select gains for course loop
 
-P.course_kp = nan;
-P.course_ki = nan;
-P.course_kd = nan;
+P.course_kp = 2*zeta_course*w_course*Vg/gravity;
+P.course_ki = w_course*w_course*Vg/gravity;
+P.course_kd = 0.0;
 
 %% select gains for sideslip hold
 
