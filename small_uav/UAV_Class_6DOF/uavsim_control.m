@@ -58,40 +58,27 @@ delta_t=P.delta_t0;
 firstTime=(time==0);
 
 % Initialize autopilot commands (may be overwritten with autopilot logic)
-phi_c = 45*pi/180; % For lect7_5
-delta_a = PIR_roll_hold(phi_c, phi_hat, p_hat, firstTime, P); % For lect7_5
-theta_c = 0;
-
-
+chi_c = 271*pi/180;
+vg_ned = [Vn_hat, Ve_hat, Vd_hat];
+[~, ~, chi_hat] = makeVgGammaCourse(vg_ned);
+phi_c = PIR_course_hold(chi_c, chi_hat, p_hat, firstTime, P);
+delta_a = PIR_roll_hold(phi_c, phi_hat, p_hat, firstTime, P); 
 
 % Flight control logic
-
-% Lect 6_3 -- start
-% if mod(time,20)<10
-%     h_c=50;
-% else
-%     h_c=51;
-% end
 
 % Next line for Lect 6_4
 h_c = 50;
 
-P.altitude_kp = 0.23; % kp>0
-P.altitude_ki = 0.08; % ki>0
+% From sol'n
+P.altitude_kp = 0.05; % kp>0
+P.altitude_ki = 0.02; % ki>0
 P.altitude_kd = 0; % <-- Don?t use
 theta_c = PIR_alt_hold_using_pitch(h_c, h_hat, 0, firstTime, P);
+delta_e = PIR_pitch_hold(theta_c, theta_hat, q_hat, firstTime, P);
 % Lect 6_3 -- end
 
 % e.g.
 %    delta_e = PIR_pitch_hold(theta_c, theta_hat, q_hat, firstTime, P);
-
-% Lect 6_2 -- start
-%theta_c = 20*pi/180; % only for 6_2
-P.pitch_kp = -0.8; % kp<0
-P.pitch_ki = -0.00; % ki<=0
-P.pitch_kd = -0.1; % kd<0
-delta_e = PIR_pitch_hold(theta_c, theta_hat, q_hat, firstTime, P);
-% Lect 6_2 -- end
 
 % Compile vector of control surface deflections
 delta = [ ...
@@ -166,9 +153,13 @@ function u = PIR_pitch_hold(theta_c, theta_hat, q_hat, init_flag, P)
 y_c = theta_c; % Command
 y = theta_hat; % Feedback
 y_dot = q_hat; % Rate feedback
-kp = P.pitch_kp;
-ki = P.pitch_ki;
-kd = P.pitch_kd;
+%kp = P.pitch_kp;
+%ki = P.pitch_ki;
+%kd = P.pitch_kd;
+% From sol'n %
+kp = -2;
+ki = 0;
+kd = -0.56;
 u_lower_limit = -P.delta_e_max;
 u_upper_limit = +P.delta_e_max;
 
@@ -181,6 +172,7 @@ end
 % Perform "PI with rate feedback"
 error = y_c - y;  % Error between command and response
 error_int = error_int + P.Ts*error; % Update integrator
+
 u = kp*error + ki*error_int - kd*y_dot;
 
 % Output saturation & integrator clamping
@@ -249,7 +241,7 @@ function u = PIR_roll_hold(phi_c, phi_hat, p_hat, init_flag, P)
 % Set up PI with rate feedback
 y_c = phi_c;   % Command
 y = phi_hat;   % Feedback
-y_dot = 0;   % Rate feedback
+y_dot = p_hat;   % Rate feedback
 kp = P.roll_kp;
 ki = P.roll_ki;
 kd = P.roll_kd;
@@ -264,6 +256,47 @@ end
 
 % Perform "PI with rate feedback"
 error = y_c - y;  % Error between command and response
+error_int = error_int + P.Ts*error; % Update integrator
+u = kp*error + ki*error_int - kd*y_dot;
+
+% Output saturation & integrator clamping
+%   - Limit u to u_upper_limit & u_lower_limit
+%   - Clamp if error is driving u past limit
+if u > u_upper_limit
+    u = u_upper_limit;
+    if ki*error>0
+        error_int = error_int - P.Ts*error;
+    end
+elseif u < u_lower_limit
+    u = u_lower_limit;
+    if ki*error<0
+        error_int = error_int - P.Ts*error;
+    end
+end
+
+end
+
+function u = PIR_course_hold(chi_c, chi_hat, p_hat, init_flag, P)
+
+% Set up PI with rate feedback
+y_c = chi_c;   % Command
+y = chi_hat;   % Feedback
+y_dot = 0.0;   % Rate feedback % This was zero
+kp = P.course_kp;
+ki = P.course_ki;
+kd = P.course_kd;
+u_lower_limit = -P.phi_max;
+u_upper_limit = +P.phi_max;
+
+% Initialize integrator (e.g. when t==0)
+persistent error_int;
+if( init_flag )
+    error_int = 0;
+end
+
+% Perform "PI with rate feedback"
+error = mod(y_c - y + pi, 2*pi) - pi;  % Error between command and response
+
 error_int = error_int + P.Ts*error; % Update integrator
 u = kp*error + ki*error_int - kd*y_dot;
 

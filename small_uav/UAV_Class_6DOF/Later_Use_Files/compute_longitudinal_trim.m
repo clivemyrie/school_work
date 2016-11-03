@@ -171,7 +171,8 @@ function [Jcost, x, deltas] = cost_function(trim_test,P)
     fz = f_and_m(3);
     ell = f_and_m(4);
     m = f_and_m(5);
-    Jcost = fx*fx + fz*fz + m*m + ell*ell;
+    %Jcost = fx*fx + fz*fz + m*m + ell*ell;
+    Jcost = fx*fx + fz*fz + m*m;
 
     % Propeller force is non-linear with delta_t.  Results outside of [0 1]
     % are invalid, so bump up Jcost outside of the valid ranges.

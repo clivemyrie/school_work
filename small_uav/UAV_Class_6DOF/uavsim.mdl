@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.77"
+    ComputedModelVersion    "1.81"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -32,7 +32,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [122.0, 32.0, 1165.0, 745.0]
+      Location		      [100.0, 84.0, 1307.0, 853.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -51,15 +51,15 @@ Model {
       }
       Array {
 	Type			"Simulink.EditorInfo"
-	Dimension		2
+	Dimension		3
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
 	  ViewObjType		  "SimulinkTopLevel"
 	  LoadSaveID		  "0"
-	  Extents		  [1109.0, 534.0]
-	  ZoomFactor		  [1.0]
-	  Offset		  [13.266615140194403, -22.295238095238005]
+	  Extents		  [1251.0, 642.0]
+	  ZoomFactor		  [1.398633257403189]
+	  Offset		  [6.7776872964169, 7.9902280130293093]
 	}
 	Object {
 	  $ObjectID		  6
@@ -67,6 +67,15 @@ Model {
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "121"
 	  Extents		  [1109.0, 537.0]
+	  ZoomFactor		  [1.0]
+	  Offset		  [0.0, 0.0]
+	}
+	Object {
+	  $ObjectID		  7
+	  IsActive		  [0]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "96"
+	  Extents		  [1251.0, 642.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [0.0, 0.0]
 	}
@@ -80,9 +89,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Oct 25 14:41:36 2016"
-  RTWModifiedTimeStamp	  399300321
-  ModelVersionFormat	  "1.%<AutoIncrement:77>"
+  LastModifiedDate	  "Wed Nov 02 19:06:22 2016"
+  RTWModifiedTimeStamp	  400014382
+  ModelVersionFormat	  "1.%<AutoIncrement:81>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -130,7 +139,7 @@ Model {
   TryForcingSFcnDF	  off
   Object {
     $PropName		    "DataLoggingOverride"
-    $ObjectID		    7
+    $ObjectID		    8
     $ClassName		    "Simulink.SimulationData.ModelLoggingInfo"
     model_		    "uavsim"
     signals_		    []
@@ -175,16 +184,16 @@ Model {
     Type		    "Handle"
     Dimension		    1
     Simulink.ConfigSet {
-      $ObjectID		      8
+      $ObjectID		      9
       Version		      "1.16.2"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
-	  $ObjectID		  9
+	  $ObjectID		  10
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "20"
+	  StopTime		  "100"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -218,7 +227,7 @@ Model {
 	  InsertRTBMode		  "Whenever possible"
 	}
 	Simulink.DataIOCC {
-	  $ObjectID		  10
+	  $ObjectID		  11
 	  Version		  "1.16.2"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
@@ -256,7 +265,7 @@ Model {
 	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
-	  $ObjectID		  11
+	  $ObjectID		  12
 	  Version		  "1.16.2"
 	  Array {
 	    Type		    "Cell"
@@ -313,7 +322,7 @@ Model {
 	  AccelVerboseBuild	  off
 	}
 	Simulink.DebuggingCC {
-	  $ObjectID		  12
+	  $ObjectID		  13
 	  Version		  "1.16.2"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
@@ -408,7 +417,7 @@ Model {
 	  AllowAutomaticUnitConversions	on
 	}
 	Simulink.HardwareCC {
-	  $ObjectID		  13
+	  $ObjectID		  14
 	  Version		  "1.16.2"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
@@ -450,7 +459,7 @@ Model {
 	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
-	  $ObjectID		  14
+	  $ObjectID		  15
 	  Version		  "1.16.2"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
 	  EnableRefExpFcnMdlSchedulingChecks on
@@ -466,7 +475,7 @@ Model {
 	  SupportModelReferenceSimTargetCustomCode off
 	}
 	Simulink.SFSimCC {
-	  $ObjectID		  15
+	  $ObjectID		  16
 	  Version		  "1.16.2"
 	  SFSimEcho		  on
 	  SimCtrlC		  on
@@ -478,7 +487,7 @@ Model {
 	}
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
-	  $ObjectID		  16
+	  $ObjectID		  17
 	  Version		  "1.16.2"
 	  Array {
 	    Type		    "Cell"
@@ -543,7 +552,7 @@ Model {
 	    Type		    "Handle"
 	    Dimension		    2
 	    Simulink.CodeAppCC {
-	      $ObjectID		      17
+	      $ObjectID		      18
 	      Version		      "1.16.2"
 	      Array {
 		Type			"Cell"
@@ -612,7 +621,7 @@ Model {
 	    }
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
-	      $ObjectID		      18
+	      $ObjectID		      19
 	      Version		      "1.16.2"
 	      Array {
 		Type			"Cell"
@@ -699,7 +708,7 @@ Model {
 	  }
 	}
 	SlCovCC.ConfigComp {
-	  $ObjectID		  19
+	  $ObjectID		  20
 	  Version		  "1.16.2"
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
@@ -741,11 +750,11 @@ Model {
   }
   Simulink.ConfigSet {
     $PropName		    "ActiveConfigurationSet"
-    $ObjectID		    8
+    $ObjectID		    9
   }
   Object {
     $PropName		    "DataTransfer"
-    $ObjectID		    20
+    $ObjectID		    21
     $ClassName		    "Simulink.GlobalDataTransfer"
     DefaultTransitionBetweenSyncTasks "Ensure deterministic transfer (maximum delay)"
     DefaultTransitionBetweenAsyncTasks "Ensure data integrity only"
@@ -985,7 +994,7 @@ Model {
   }
   System {
     Name		    "uavsim"
-    Location		    [122, 32, 1287, 777]
+    Location		    [100, 84, 1407, 937]
     Open		    on
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
@@ -997,7 +1006,7 @@ Model {
     TiledPaperMargins	    [0.500000, 0.500000, 0.500000, 0.500000]
     TiledPageScale	    1
     ShowPageBoundaries	    off
-    ZoomFactor		    "100"
+    ZoomFactor		    "140"
     ReportName		    "simulink-default.rpt"
     SIDHighWatermark	    "325"
     Block {
@@ -1005,7 +1014,7 @@ Model {
       Name		      "Autopilot:\nFlight Control"
       SID		      "96"
       Ports		      [2, 2]
-      Position		      [200, 132, 290, 208]
+      Position		      [200, 127, 290, 203]
       ZOrder		      -1
       BackgroundColor	      "cyan"
       DropShadow	      on
@@ -1013,8 +1022,8 @@ Model {
       Variant		      off
       System {
 	Name			"Autopilot:\nFlight Control"
-	Location		[121, 36, 1136, 686]
-	Open			off
+	Location		[100, 84, 1407, 937]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2348,7 +2357,7 @@ Model {
       Variant		      off
       System {
 	Name			"Visualiztion \n& Output"
-	Location		[122, 32, 1287, 780]
+	Location		[122, 32, 1287, 777]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2954,6 +2963,7 @@ Model {
       ZOrder		      14
       SrcBlock		      "Autopilot:\nFlight Control"
       SrcPort		      2
+      Points		      [10, 0; 0, 5]
       DstBlock		      "Goto1"
       DstPort		      1
     }
@@ -2968,6 +2978,7 @@ Model {
       ZOrder		      16
       SrcBlock		      "Trajectory\nCommands"
       SrcPort		      1
+      Points		      [28, 0; 0, -5]
       DstBlock		      "Autopilot:\nFlight Control"
       DstPort		      1
     }
@@ -3008,7 +3019,7 @@ Model {
       ZOrder		      22
       SrcBlock		      "Autopilot:\nFlight Control"
       SrcPort		      1
-      Points		      [20, 0]
+      Points		      [20, 0; 0, 5]
       Branch {
 	ZOrder			23
 	DstBlock		"Goto6"
@@ -3041,7 +3052,7 @@ Model {
       ZOrder		      28
       SrcBlock		      "Feedback \nSwitch"
       SrcPort		      1
-      Points		      [-10, 0; 0, -160]
+      Points		      [-10, 0; 0, -165]
       DstBlock		      "Autopilot:\nFlight Control"
       DstPort		      2
     }

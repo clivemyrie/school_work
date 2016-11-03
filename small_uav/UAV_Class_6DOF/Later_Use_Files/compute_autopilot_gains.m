@@ -31,11 +31,16 @@ zeta_roll = 0.9; % Roll loop damping coefficient
 
 P.roll_kp = P.delta_a_max/e_phi_max*sign(models.a_phi2);
 omega_n_phi = sqrt(P.roll_kp*models.a_phi2);
-P.roll_kd = (2*zeta_roll *omega_n_phi - models.a_phi1) / models.a_phi2;
 P.roll_ki = 0.0;
+P.roll_kd = (2*zeta_roll *omega_n_phi - models.a_phi1) / models.a_phi2;
+
 
 %% select gains for course loop
-
+zeta_course = 2.1;
+W_course = 30;
+w_course = omega_n_phi/W_course;
+Vg = P.Va0;
+gravity = P.gravity;
 P.course_kp = 2*zeta_course*w_course*Vg/gravity;
 P.course_ki = w_course*w_course*Vg/gravity;
 P.course_kd = 0.0;
