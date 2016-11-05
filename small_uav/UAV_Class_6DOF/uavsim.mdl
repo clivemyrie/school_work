@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.81"
+    ComputedModelVersion    "1.85"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -55,18 +55,18 @@ Model {
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "198"
 	  Extents		  [1251.0, 642.0]
-	  ZoomFactor		  [1.398633257403189]
-	  Offset		  [6.7776872964169, 7.9902280130293093]
+	  ZoomFactor		  [1.0]
+	  Offset		  [0.0, 0.0]
 	}
 	Object {
 	  $ObjectID		  6
 	  IsActive		  [0]
 	  ViewObjType		  "SimulinkSubsys"
 	  LoadSaveID		  "121"
-	  Extents		  [1109.0, 537.0]
+	  Extents		  [1251.0, 642.0]
 	  ZoomFactor		  [1.0]
 	  Offset		  [0.0, 0.0]
 	}
@@ -89,9 +89,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Wed Nov 02 19:06:22 2016"
-  RTWModifiedTimeStamp	  400014382
-  ModelVersionFormat	  "1.%<AutoIncrement:81>"
+  LastModifiedDate	  "Sat Nov 05 14:09:23 2016"
+  RTWModifiedTimeStamp	  400255455
+  ModelVersionFormat	  "1.%<AutoIncrement:85>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -193,7 +193,7 @@ Model {
 	  $ObjectID		  10
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "100"
+	  StopTime		  "250"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -995,7 +995,7 @@ Model {
   System {
     Name		    "uavsim"
     Location		    [100, 84, 1407, 937]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -2012,8 +2012,8 @@ Model {
       Variant		      off
       System {
 	Name			"Trajectory\nCommands"
-	Location		[121, 36, 1136, 686]
-	Open			off
+	Location		[100, 84, 1407, 937]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2072,7 +2072,7 @@ Model {
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "5"
-	  gain			  "6.8"
+	  gain			  "14.2431"
 	  high			  "18"
 	}
 	Block {
@@ -2087,7 +2087,7 @@ Model {
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "0"
-	  gain			  "50"
+	  gain			  "65.1376"
 	  high			  "100"
 	}
 	Block {
@@ -2102,7 +2102,7 @@ Model {
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "-360"
-	  gain			  "0"
+	  gain			  "66.055"
 	  high			  "360"
 	}
 	Block {
@@ -2357,7 +2357,7 @@ Model {
       Variant		      off
       System {
 	Name			"Visualiztion \n& Output"
-	Location		[122, 32, 1287, 777]
+	Location		[100, 84, 1407, 937]
 	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200

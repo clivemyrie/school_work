@@ -50,28 +50,37 @@ P.course_kd = 0.0;
 % Simulated UAV doesn't have a rudder to control
 
 %% select gains for the pitch loop, including DC gain
+e_theta_max = 30*pi/180;
+zeta_pitch = 0.9;
 
-P.pitch_kp = nan;
-P.pitch_ki = nan;
-P.pitch_kd = nan;
-P.K_theta_DC = nan;
+P.pitch_kp = P.delta_e_max/e_theta_max*sign(models.a_theta3);
+P.pitch_ki = 0.0;
+omega_n_theta = sqrt(models.a_theta2 + P.pitch_kp*models.a_theta3);
+P.pitch_kd = (2*zeta_pitch*omega_n_theta - models.a_theta1)/models.a_theta3;
+P.K_theta_DC = P.pitch_kp*models.a_theta3/(models.a_theta2 + P.pitch_kp*models.a_theta3);
 
 %% select gains for altitude loop
-
-P.altitude_kp = nan;
-P.altitude_ki = nan;
-P.altitude_kd = 0;
+zeta_h = 1.1;
+W_h = 30;
+omega_n_h = omega_n_theta/W_h;
+P.altitude_kp = 2*zeta_h*omega_n_h/P.K_theta_DC/P.Va0;
+P.altitude_ki = omega_n_h*omega_n_h/P.K_theta_DC/P.Va0;
+P.altitude_kd = 0.0;
 
 %% airspeed hold using pitch
-
-P.airspeed_pitch_kp = nan;
-P.airspeed_pitch_ki = nan;
-P.airspeed_pitch_kd = 0;
+W_V2 = 40;
+omega_n_V2 = omega_n_theta/W_V2;
+zeta_V2 = 1;
+P.airspeed_pitch_kp = (models.a_V1 - 2*zeta_V2*omega_n_V2)/P.K_theta_DC/P.gravity;
+P.airspeed_pitch_ki = -omega_n_V2*omega_n_V2/P.K_theta_DC/P.gravity;
+P.airspeed_pitch_kd = 0.0;
 
 %% airspeed hold using throttle
 
-P.airspeed_throttle_kp = nan;
-P.airspeed_throttle_ki = nan;
-P.airspeed_throttle_kd = 0;
-
+zeta_V = 1.0;
+W_V = 40;
+omega_n_V = omega_n_theta/W_V;
+P.airspeed_throttle_kp = (2*zeta_V*omega_n_V - models.a_V1) / models.a_V2;
+P.airspeed_throttle_ki = omega_n_V*omega_n_V/models.a_V2;
+P.airspeed_throttle_kd = 0.0;
 end
