@@ -47,14 +47,16 @@ function out = uavsim_sensors(uu, P)
     r     = x(12);  % body rate about z, rad/s
 
     % Gyro Measurements
-    p_gyro = 0; % rad/s
-    q_gyro = 0; % rad/s
-    r_gyro = 0; % rad/s
+    gyro_noise_pqr = randn(3,1)*P.sigma_noise_gyro;
+    p_gyro = p + gyro_noise_pqr(1); % rad/s
+    q_gyro = q + gyro_noise_pqr(2); % rad/s
+    r_gyro = r + gyro_noise_pqr(3); % rad/s
 
     % Accelerometer Measurements
-    ax_accel= 0; % m/s^2
-    ay_accel= 0; % m/s^2
-    az_accel= 0; % m/s^2
+    accel_noise_xyz = randn(3,1)*P.sigma_noise_accel;
+    ax_accel= fb_x/P.mass + accel_noise_xyz(1); % m/s^2
+    ay_accel= fb_y/P.mass + accel_noise_xyz(2); % m/s^2
+    az_accel= fb_z/P.mass + accel_noise_xyz(3); % m/s^2
 
     % Barometric Pressure Altimeter (Note: don't overwrite P structure!)
     P0 = 101325;  % Standard pressure at sea level, N/m^2
@@ -65,50 +67,58 @@ function out = uavsim_sensors(uu, P)
     if(time==0)
         bias_static_press = P.sigma_bias_static_press*randn;
     end
-    true_static_press = 0; % True static pressure at UAV altitude (above sea level), N/m^2
-    static_press = 0; % Measured static pressure, N/m^2
+    P0 = 101325;
+    M = 0.0289644;
+    R = 8.3142;
+    T = P.air_temp_F;
+    true_static_press = P0*exp(-M*P.gravity/R/T); % True static pressure at UAV altitude (above sea level), N/m^2
+    static_press = true_static_press + bias_static_press + randn*P.sigma_bias_static_press; % Measured static pressure, N/m^2
 
     % Airspeed Pitot Measurment for axially mounted pitot tube
     persistent bias_diff_press
     if(time==0)
         bias_diff_press = P.sigma_bias_diff_press*randn;
     end
-    true_diff_press = 0; % True differential pressure at UAV airspeed
-    diff_press = 0; % Measured differential pressure, N/m^2
+    Va = norm([u;v;w] - wind_ned);
+    true_diff_press = 0.5 * P.rho * Va*Va; % True differential pressure at UAV airspeed
+    diff_press = true_diff_press + bias_diff_press + randn*P.sigma_bias_diff_press; % Measured differential pressure, N/m^2
 
     % Magnetometer Measurement
     persistent bias_mag
     if(time==0)
         bias_mag = P.sigma_bias_mag*randn;
     end
-    psi_mag= 0; % Magnetometer measurement, rad
+    psi_mag= psi + bias_mag + randn(1,1)*P.sigma_bias_mag; % Magnetometer measurement, rad
 
     % GPS Position and Velocity Measurements
+    gps_error(1) = randn*P.sigma_eta_gps_north;
+    gps_error(2) = randn*P.sigma_eta_gps_east;
+    gps_error(3) = randn*P.sigma_eta_gps_alt;
     persistent time_gps_prev ...
                gps_north_error gps_east_error gps_alt_error ...
                pn_gps pe_gps alt_gps Vn_gps Ve_gps Vd_gps
     if(time==0)
-        gps_north_error = 0;
-        gps_east_error = 0;
-        gps_alt_error = 0;
+        gps_north_error = gps_error(1);
+        gps_east_error = gps_error(2);
+        gps_alt_error = gps_error(3);
         time_gps_prev = -inf; % Force update at time==0
     end
     if(time>time_gps_prev+P.Ts_gps)
         
         % Gauss-Markov growth of GPS position errors
-        gps_north_error = 0;
-        gps_east_error  = 0;
-        gps_alt_error   = 0;
+        gps_north_error = exp(-P.Ts_gps/P.tau_gps)*gps_north_error + P.sigma_eta_gps_north*randn*sqrt(P.Ts_gps);
+        gps_east_error  = exp(-P.Ts_gps/P.tau_gps)*gps_east_error + P.sigma_eta_gps_east*randn*sqrt(P.Ts_gps);
+        gps_alt_error   = exp(-P.Ts_gps/P.tau_gps)*gps_alt_error + P.sigma_eta_gps_alt*randn*sqrt(P.Ts_gps);
 
         % GPS Position Measurements
-        pn_gps = 0;
-        pe_gps = 0;
-        alt_gps= 0;
+        pn_gps = pn + gps_north_error;
+        pe_gps = pe + gps_east_error;
+        alt_gps= -pd + gps_alt_error;
 
         % GPS Velocity Measurements
-        Vn_gps = 0;
-        Ve_gps = 0;
-        Vd_gps = 0;
+        Vn_gps = u + randn*P.sigma_noise_gps_speed;
+        Ve_gps = v + randn*P.sigma_noise_gps_speed;
+        Vd_gps = w + randn*P.sigma_noise_gps_speed;
 
         time_gps_prev = time;
     end

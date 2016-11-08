@@ -57,6 +57,14 @@ delta_t=P.delta_t0;
 % Set "first-time" flag, which is used to initialize autopilot integrators
 firstTime=(time==0);
 
+if time<10,
+    h_c=50; Va_c=13; chi_c=0*pi/180;
+elseif time<20
+    h_c=50; Va_c=13; chi_c=60*pi/180;
+else
+    h_c=100; Va_c=15; chi_c=0*pi/180;
+end
+
 % Initialize autopilot commands (may be overwritten with autopilot logic)
 %chi_c = 0*pi/180;
 vg_ned = [Vn_hat, Ve_hat, Vd_hat];

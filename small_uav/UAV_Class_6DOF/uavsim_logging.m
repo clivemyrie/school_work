@@ -16,8 +16,8 @@ function uavsim_logging(uu,P)
 
     % Logging flags
     log_commands     = 1;
-    log_measurements = 0;
-    log_estimates    = 0;
+    log_measurements = 1;
+    log_estimates    = 1;
     
     % Extract variables from input vector uu
     %   uu = [x(1:); f_and_m(1:6); wind_ned(1:3); ap_cmds(1:9); estimates(1:23); meas(1:18); time(1)];
