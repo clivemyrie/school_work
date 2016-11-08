@@ -28,12 +28,12 @@ S = stepinfo(out.roll_deg, out.time_s, 45)
 
 figure(1); hold on
 plot(out.time_s, out.roll_deg);
-grid on; title('Problem 6, Part B - No Gusting, e\_phi\_max = 45, zeta = 1.5')
+grid on; title('Problem 6, Part B - No Gusting, e\_phi\_max = 45, zeta = 0.9')
 xlabel('time, s');ylabel('roll, deg')
 
 figure(2); hold on
 plot(out.time_s, out.da_deg);
-grid on; title('Problem 6, Part B - No Gusting, e\_phi\_max = 45, zeta = 1.5')
+grid on; title('Problem 6, Part B - No Gusting, e\_phi\_max = 45, zeta = 0.9')
 xlabel('time, s');ylabel('aileron deflection, deg')
 
 end

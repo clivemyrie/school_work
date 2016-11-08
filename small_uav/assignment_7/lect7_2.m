@@ -34,7 +34,7 @@ H = zpk(H);
 %% Problem 2, Part A - Compare TFs (poles and zeros)
 models = compute_tf_models(P);
 
-de_over_q_tf = H(3, 1)
+de_over_q_tf = minreal(H(3, 1))
 G_de2q = zpk(models.G_de2q)
 
 

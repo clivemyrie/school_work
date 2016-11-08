@@ -5,6 +5,11 @@ load_uavsim
 % Run simulation
 
 %%
+% Waypoints
+wp_east = [0 400 500 500 0]; %m
+wp_north = [100 200 300 500 600]; %m
+wp_alt = [50 60 90 90 60]; %m
+wp_speed = [13 13 13 16 16]; %m/s
 
 figure; hold on
 plot(wp_east,wp_north,'r.--',out.east_m,out.north_m); axis equal
@@ -31,7 +36,7 @@ title('Problem 7, Part C')
 
 figure; hold on
 plot(out.time_s, out.course_deg)
-plot(out.time_s, out.course_cmd_mps)
+plot(out.time_s, out.course_cmd_deg)
 legend('course', 'course command')
 xlabel('time, s');ylabel('Course, deg');
 grid on;

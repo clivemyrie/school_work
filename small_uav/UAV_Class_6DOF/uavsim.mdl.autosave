@@ -7,7 +7,7 @@ Model {
     NumRootInports	    0
     NumRootOutports	    0
     ParameterArgumentNames  ""
-    ComputedModelVersion    "1.96"
+    ComputedModelVersion    "1.95"
     NumModelReferences	    0
     NumTestPointedSignals   0
     NumProvidedFunctions    0
@@ -89,9 +89,9 @@ Model {
   ModifiedByFormat	  "%<Auto>"
   LastModifiedBy	  "myrieco1"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Tue Nov 08 16:20:35 2016"
-  RTWModifiedTimeStamp	  400522829
-  ModelVersionFormat	  "1.%<AutoIncrement:96>"
+  LastModifiedDate	  "Tue Nov 08 15:56:09 2016"
+  RTWModifiedTimeStamp	  400522820
+  ModelVersionFormat	  "1.%<AutoIncrement:95>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
   SampleTimeAnnotations	  off
@@ -193,7 +193,7 @@ Model {
 	  $ObjectID		  10
 	  Version		  "1.16.2"
 	  StartTime		  "0.0"
-	  StopTime		  "60"
+	  StopTime		  "300"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"

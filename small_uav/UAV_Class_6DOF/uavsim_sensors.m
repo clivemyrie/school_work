@@ -67,10 +67,6 @@ function out = uavsim_sensors(uu, P)
     if(time==0)
         bias_static_press = P.sigma_bias_static_press*randn;
     end
-    P0 = 101325;
-    M = 0.0289644;
-    R = 8.3142;
-    T = P.air_temp_F;
     true_static_press = P0*exp(-M*P.gravity/R/T); % True static pressure at UAV altitude (above sea level), N/m^2
     static_press = true_static_press + bias_static_press + randn*P.sigma_bias_static_press; % Measured static pressure, N/m^2
 
