@@ -1,8 +1,8 @@
 Model {
   Name			  "uavsim"
-  Version		  8.7
-  MdlSubVersion		  1
-  SavedCharacterEncoding  "UTF-8"
+  Version		  8.5
+  MdlSubVersion		  0
+  SavedCharacterEncoding  "ISO-8859-1"
   GraphicalInterface {
     NumRootInports	    0
     NumRootOutports	    0
@@ -10,11 +10,9 @@ Model {
     ComputedModelVersion    "1.87"
     NumModelReferences	    0
     NumTestPointedSignals   0
-    NumProvidedFunctions    0
-    NumRequiredFunctions    0
   }
   ScopeRefreshTime	  0.035000
-  OverrideScopeRefreshTime on
+  OverrideScopeRefreshTime off
   DisableAllScopes	  off
   DataTypeOverride	  "UseLocalSettings"
   DataTypeOverrideAppliesTo "AllNumericTypes"
@@ -22,7 +20,6 @@ Model {
   MinMaxOverflowArchiveMode "Overwrite"
   FPTRunName		  "Run 1"
   MaxMDLFileLineLength	  120
-  LastSavedArchitecture	  "glnxa64"
   Object {
     $PropName		    "BdWindowsInfo"
     $ObjectID		    1
@@ -32,7 +29,7 @@ Model {
       $ObjectID		      2
       $ClassName	      "Simulink.WindowInfo"
       IsActive		      [1]
-      Location		      [100.0, 84.0, 1307.0, 853.0]
+      Location		      [100.0, 47.0, 1307.0, 853.0]
       Object {
 	$PropName		"ModelBrowserInfo"
 	$ObjectID		3
@@ -55,10 +52,10 @@ Model {
 	Object {
 	  $ObjectID		  5
 	  IsActive		  [1]
-	  ViewObjType		  "SimulinkTopLevel"
-	  LoadSaveID		  "0"
-	  Extents		  [1251.0, 642.0]
-	  ZoomFactor		  [1.4]
+	  ViewObjType		  "SimulinkSubsys"
+	  LoadSaveID		  "198"
+	  Extents		  [1273.0, 683.0]
+	  ZoomFactor		  [1.0]
 	  Offset		  [0.0, 0.0]
 	}
 	Object {
@@ -87,10 +84,10 @@ Model {
   Creator		  "bartojd1"
   UpdateHistory		  "UpdateHistoryNever"
   ModifiedByFormat	  "%<Auto>"
-  LastModifiedBy	  "myrieco1"
+  LastModifiedBy	  "clivemyrie"
   ModifiedDateFormat	  "%<Auto>"
-  LastModifiedDate	  "Mon Nov 07 19:13:43 2016"
-  RTWModifiedTimeStamp	  400446823
+  LastModifiedDate	  "Sat Nov 05 18:25:35 2016"
+  RTWModifiedTimeStamp	  400270118
   ModelVersionFormat	  "1.%<AutoIncrement:87>"
   ConfigurationManager	  "none"
   SampleTimeColors	  off
@@ -99,10 +96,6 @@ Model {
   WideLines		  off
   ShowLineDimensions	  on
   ShowPortDataTypes	  off
-  ShowEditTimeErrors	  on
-  ShowEditTimeWarnings	  off
-  ShowEditTimeAdvisorChecks off
-  ShowPortUnits		  off
   ShowDesignRanges	  off
   ShowLoopsOnError	  on
   IgnoreBidirectionalLines off
@@ -111,10 +104,8 @@ Model {
   ShowSignalResolutionIcons on
   ShowViewerIcons	  on
   SortedOrder		  off
-  VariantCondition	  off
   ExecutionContextIcon	  off
   ShowLinearizationAnnotations on
-  ShowVisualizeInsertedRTB on
   ShowMarkup		  on
   BlockNameDataTip	  off
   BlockParametersDataTip  off
@@ -122,7 +113,6 @@ Model {
   ToolBar		  on
   StatusBar		  on
   BrowserShowLibraryLinks off
-  FunctionConnectors	  off
   BrowserLookUnderMasks	  off
   SimulationMode	  "normal"
   PauseTimes		  "5"
@@ -157,6 +147,27 @@ Model {
       PropName		      "logAsSpecifiedByModelsSSIDs_"
     }
   }
+  RecordCoverage	  off
+  CovPath		  "/"
+  CovSaveName		  "covdata"
+  CovMetricSettings	  "dw"
+  CovNameIncrementing	  off
+  CovHtmlReporting	  on
+  CovForceBlockReductionOff on
+  CovEnableCumulative	  on
+  covSaveCumulativeToWorkspaceVar on
+  CovSaveSingleToWorkspaceVar on
+  CovCumulativeVarName	  "covCumulativeData"
+  CovCumulativeReport	  off
+  CovReportOnPause	  on
+  CovModelRefEnable	  "Off"
+  CovExternalEMLEnable	  off
+  CovSFcnEnable		  on
+  CovBoundaryAbsTol	  0.000010
+  CovBoundaryRelTol	  0.010000
+  CovUseTimeInterval	  off
+  CovStartTime		  0
+  CovStopTime		  0
   ExtModeBatchMode	  off
   ExtModeEnableFloating	  on
   ExtModeTrigType	  "manual"
@@ -185,15 +196,15 @@ Model {
     Dimension		    1
     Simulink.ConfigSet {
       $ObjectID		      9
-      Version		      "1.16.2"
+      Version		      "1.15.0"
       Array {
 	Type			"Handle"
 	Dimension		9
 	Simulink.SolverCC {
 	  $ObjectID		  10
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  StartTime		  "0.0"
-	  StopTime		  "300"
+	  StopTime		  "50"
 	  AbsTol		  "auto"
 	  FixedStep		  "auto"
 	  InitialStep		  "auto"
@@ -218,8 +229,6 @@ Model {
 	  ZeroCrossControl	  "UseLocalSettings"
 	  ZeroCrossAlgorithm	  "Nonadaptive"
 	  AlgebraicLoopSolver	  "TrustRegion"
-	  SolverInfoToggleStatus  off
-	  IsAutoAppliedInSIP	  off
 	  SolverResetMethod	  "Fast"
 	  PositivePriorityOrder	  off
 	  AutoInsertRateTranBlk	  off
@@ -228,7 +237,7 @@ Model {
 	}
 	Simulink.DataIOCC {
 	  $ObjectID		  11
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Decimation		  "1"
 	  ExternalInput		  "[t, u]"
 	  FinalStateName	  "xFinal"
@@ -247,8 +256,6 @@ Model {
 	  DSMLogging		  on
 	  InspectSignalLogs	  off
 	  VisualizeSimOutput	  on
-	  StreamToWorkspace	  off
-	  StreamVariableName	  "streamout"
 	  SaveTime		  off
 	  ReturnWorkspaceOutputs  off
 	  StateSaveName		  "xout"
@@ -260,13 +267,10 @@ Model {
 	  OutputTimes		  "[]"
 	  ReturnWorkspaceOutputsName "out"
 	  Refine		  "1"
-	  LoggingToFile		  off
-	  LoggingFileName	  "out.mat"
-	  LoggingIntervals	  "[-inf, inf]"
 	}
 	Simulink.OptimizationCC {
 	  $ObjectID		  12
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -283,7 +287,7 @@ Model {
 	  BlockReduction	  on
 	  BooleanDataType	  on
 	  ConditionallyExecuteInputs on
-	  DefaultParameterBehavior "Tunable"
+	  InlineParams		  off
 	  UseDivisionForNetSlopeComputation "off"
 	  UseFloatMulNetSlope	  off
 	  DefaultUnderspecifiedDataType	"double"
@@ -323,7 +327,7 @@ Model {
 	}
 	Simulink.DebuggingCC {
 	  $ObjectID		  13
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  RTPrefix		  "error"
 	  ConsistencyChecking	  "none"
 	  ArrayBoundsChecking	  "none"
@@ -350,6 +354,7 @@ Model {
 	  IgnoredZcDiagnostic	  "warning"
 	  SolverPrmCheckMsg	  "warning"
 	  InheritedTsInSrcMsg	  "warning"
+	  DiscreteInheritContinuousMsg "warning"
 	  MultiTaskDSMMsg	  "error"
 	  MultiTaskCondExecSysMsg "error"
 	  MultiTaskRateTransMsg	  "error"
@@ -382,7 +387,6 @@ Model {
 	  BusObjectLabelMismatch  "warning"
 	  RootOutportRequireBusObject "warning"
 	  AssertControl		  "UseLocalSettings"
-	  AllowSymbolicDim	  on
 	  ModelReferenceIOMsg	  "none"
 	  ModelReferenceMultiInstanceNormalModeStructChecksumCheck "error"
 	  ModelReferenceVersionMismatchMessage "none"
@@ -398,9 +402,6 @@ Model {
 	  StrictBusMsg		  "ErrorLevel1"
 	  BusNameAdapt		  "WarnAndRepair"
 	  NonBusSignalsTreatedAsBus "none"
-	  SymbolicDimMinMaxWarning "warning"
-	  LossOfSymbolicDimsSimulationWarning "warning"
-	  LossOfSymbolicDimsCodeGenerationWarning "error"
 	  BlockIODiagnostic	  "none"
 	  SFUnusedDataAndEventsDiag "warning"
 	  SFUnexpectedBacktrackingDiag "warning"
@@ -412,13 +413,10 @@ Model {
 	  SFTransitionActionBeforeConditionDiag	"warning"
 	  SFOutputUsedAsStateInMooreChartDiag "error"
 	  IntegerSaturationMsg	  "warning"
-	  AllowedUnitSystems	  "all"
-	  UnitsInconsistencyMsg	  "warning"
-	  AllowAutomaticUnitConversions	on
 	}
 	Simulink.HardwareCC {
 	  $ObjectID		  14
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  ProdBitPerChar	  8
 	  ProdBitPerShort	  16
 	  ProdBitPerInt		  32
@@ -455,14 +453,11 @@ Model {
 	  TargetHWDeviceType	  "Specified"
 	  TargetUnknown		  off
 	  ProdEqTarget		  on
-	  UseEmbeddedCoderFeatures on
-	  UseSimulinkCoderFeatures on
 	}
 	Simulink.ModelReferenceCC {
 	  $ObjectID		  15
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  UpdateModelReferenceTargets "IfOutOfDateOrStructuralChange"
-	  EnableRefExpFcnMdlSchedulingChecks on
 	  CheckModelReferenceTargetMessage "error"
 	  EnableParallelModelReferenceBuilds off
 	  ParallelModelReferenceErrorOnInvalidPool on
@@ -476,7 +471,8 @@ Model {
 	}
 	Simulink.SFSimCC {
 	  $ObjectID		  16
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
+	  SFSimOverflowDetection  on
 	  SFSimEcho		  on
 	  SimCtrlC		  on
 	  SimIntegrity		  on
@@ -488,7 +484,7 @@ Model {
 	Simulink.RTWCC {
 	  $BackupClass		  "Simulink.RTWCC"
 	  $ObjectID		  17
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Array {
 	    Type		    "Cell"
 	    Dimension		    8
@@ -503,12 +499,12 @@ Model {
 	    PropName		    "DisabledProps"
 	  }
 	  SystemTargetFile	  "grt.tlc"
-	  HardwareBoard		  "None"
 	  TLCOptions		  ""
 	  GenCodeOnly		  off
 	  MakeCommand		  "make_rtw"
 	  GenerateMakefile	  on
 	  PackageGeneratedCodeAndArtifacts off
+	  PackageName		  ""
 	  TemplateMakefile	  "grt_default_tmf"
 	  PostCodeGenCommand	  ""
 	  Description		  ""
@@ -522,6 +518,13 @@ Model {
 	  TLCAssert		  off
 	  RTWUseLocalCustomCode	  off
 	  RTWUseSimCustomCode	  off
+	  CustomSourceCode	  ""
+	  CustomHeaderCode	  ""
+	  CustomInclude		  ""
+	  CustomSource		  ""
+	  CustomLibrary		  ""
+	  CustomInitializer	  ""
+	  CustomTerminator	  ""
 	  Toolchain		  "Automatically locate an installed toolchain"
 	  BuildConfiguration	  "Faster Builds"
 	  IncludeHyperlinkInReport off
@@ -553,7 +556,7 @@ Model {
 	    Dimension		    2
 	    Simulink.CodeAppCC {
 	      $ObjectID		      18
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		21
@@ -622,7 +625,7 @@ Model {
 	    Simulink.GRTTargetCC {
 	      $BackupClass	      "Simulink.TargetCC"
 	      $ObjectID		      19
-	      Version		      "1.16.2"
+	      Version		      "1.15.0"
 	      Array {
 		Type			"Cell"
 		Dimension		15
@@ -645,6 +648,7 @@ Model {
 	      }
 	      TargetFcnLib	      "ansi_tfl_table_tmw.mat"
 	      TargetLibSuffix	      ""
+	      TargetPreCompLibLocation ""
 	      GenFloatMathFcnCalls    "NOT IN USE"
 	      TargetLangStandard      "C89/C90 (ANSI)"
 	      CodeReplacementLibrary  "None"
@@ -687,7 +691,6 @@ Model {
 	      AutosarCompliant	      off
 	      GRTInterface	      on
 	      GenerateAllocFcn	      off
-	      UseToolchainInfoCompliant	on
 	      GenerateSharedConstants on
 	      UseMalloc		      off
 	      ExtMode		      off
@@ -709,7 +712,7 @@ Model {
 	}
 	SlCovCC.ConfigComp {
 	  $ObjectID		  20
-	  Version		  "1.16.2"
+	  Version		  "1.15.0"
 	  Description		  "Simulink Coverage Configuration Component"
 	  Name			  "Simulink Coverage"
 	  CovEnable		  off
@@ -797,7 +800,7 @@ Model {
   MaskDefaults {
     SelfModifiable	    "off"
     IconFrame		    "on"
-    IconOpaque		    "opaque"
+    IconOpaque		    "on"
     RunInitForIconRedraw    "off"
     IconRotate		    "none"
     PortRotate		    "default"
@@ -874,7 +877,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -941,7 +943,6 @@ Model {
       OutDataTypeStr	      "Inherit: auto"
       LockScale		      off
       BusOutputAsStruct	      off
-      Unit		      "inherit"
       PortDimensions	      "-1"
       VarSizeSig	      "Inherit"
       SampleTime	      "-1"
@@ -978,8 +979,8 @@ Model {
       Opaque		      off
       MaskHideContents	      off
       SFBlockType	      "NONE"
+      Variant		      off
       GeneratePreprocessorConditionals off
-      TreatAsGroupedWhenPropagatingVariantConditions on
       ContentPreviewEnabled   off
       IsWebBlock	      off
     }
@@ -995,7 +996,7 @@ Model {
   System {
     Name		    "uavsim"
     Location		    [100, 84, 1407, 937]
-    Open		    on
+    Open		    off
     ModelBrowserVisibility  off
     ModelBrowserWidth	    200
     ScreenColor		    "white"
@@ -1019,7 +1020,6 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Autopilot:\nFlight Control"
 	Location		[100, 84, 1407, 937]
@@ -1214,7 +1214,6 @@ Model {
       DropShadow	      on
       NamePlacement	      "alternate"
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Autopilot:\nState Estimation"
 	Location		[121, 36, 1136, 686]
@@ -1347,7 +1346,6 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Forces & Moments"
 	Location		[121, 36, 1136, 686]
@@ -1631,7 +1629,6 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Kinematics &\nDynamics"
 	Location		[-8, 0, 1374, 744]
@@ -1823,7 +1820,6 @@ Model {
       DropShadow	      on
       NamePlacement	      "alternate"
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Sensors"
 	Location		[-8, 0, 1374, 744]
@@ -2009,11 +2005,10 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Trajectory\nCommands"
-	Location		[100, 84, 1407, 937]
-	Open			off
+	Location		[100, 47, 1407, 900]
+	Open			on
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
 	ScreenColor		"white"
@@ -2067,12 +2062,12 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [105, 62, 175, 78]
 	  ZOrder		  -5
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Math\nOperations/Slider\nGain"
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "5"
-	  gain			  "14.2431"
+	  gain			  "13"
 	  high			  "18"
 	}
 	Block {
@@ -2082,12 +2077,12 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [105, 107, 175, 123]
 	  ZOrder		  -6
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Math\nOperations/Slider\nGain"
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "0"
-	  gain			  "65.1376"
+	  gain			  "50"
 	  high			  "100"
 	}
 	Block {
@@ -2097,12 +2092,12 @@ Model {
 	  Ports			  [1, 1]
 	  Position		  [105, 151, 155, 169]
 	  ZOrder		  -7
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Math\nOperations/Slider\nGain"
 	  SourceType		  "Slider Gain"
 	  ContentPreviewEnabled	  off
 	  low			  "-360"
-	  gain			  "66.055"
+	  gain			  "0"
 	  high			  "360"
 	}
 	Block {
@@ -2192,7 +2187,6 @@ Model {
       BlockMirror	      on
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Truth Feedback\nfor Autopilot"
 	Location		[121, 36, 1136, 686]
@@ -2354,7 +2348,6 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Visualiztion \n& Output"
 	Location		[100, 84, 1407, 937]
@@ -2594,7 +2587,6 @@ Model {
       Position		      [540, 57, 570, 93]
       ZOrder		      -20
       BlockMirror	      on
-      CurrentSetting	      "0"
     }
     Block {
       BlockType		      SubSystem
@@ -2607,10 +2599,9 @@ Model {
       BackgroundColor	      "cyan"
       DropShadow	      on
       RequestExecContextInheritance off
-      Variant		      off
       System {
 	Name			"Winds & Gusting"
-	Location		[100, 84, 1407, 937]
+	Location		[-8, 0, 1374, 744]
 	Open			off
 	ModelBrowserVisibility	off
 	ModelBrowserWidth	200
@@ -2647,7 +2638,7 @@ Model {
 	  Position		  [705, 55, 735, 85]
 	  ZOrder		  -2
 	  BlockMirror		  on
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Sources/Band-Limited\nWhite Noise"
 	  SourceType		  "Band-Limited White Noise."
 	  ContentPreviewEnabled	  off
@@ -2664,7 +2655,7 @@ Model {
 	  Position		  [705, 130, 735, 160]
 	  ZOrder		  -3
 	  BlockMirror		  on
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Sources/Band-Limited\nWhite Noise"
 	  SourceType		  "Band-Limited White Noise."
 	  ContentPreviewEnabled	  off
@@ -2681,7 +2672,7 @@ Model {
 	  Position		  [705, 205, 735, 235]
 	  ZOrder		  -4
 	  BlockMirror		  on
-	  LibraryVersion	  "1.386"
+	  LibraryVersion	  "1.356"
 	  SourceBlock		  "simulink/Sources/Band-Limited\nWhite Noise"
 	  SourceType		  "Band-Limited White Noise."
 	  ContentPreviewEnabled	  off
@@ -2880,7 +2871,7 @@ Model {
 	Annotation {
 	  SID			  "324"
 	  Name			  "Dryden Gust Model:\nGenerates gust contributions in body coordinates"
-	  Position		  [396, 274, 614, 300]
+	  Position		  [396, 274, 614, 296]
 	  InternalMargins	  [0, 0, 0, 0]
 	  FixedHeight		  off
 	  FixedWidth		  off
@@ -3068,7 +3059,7 @@ Model {
     Annotation {
       SID		      "325"
       Name		      "UAV 6DOF Simulation \nfor JHU EP 525.461\nUAV Systems & Control"
-      Position		      [115, 29, 274, 79]
+      Position		      [115, 29, 297, 91]
       InternalMargins	      [0, 0, 0, 0]
       FixedHeight	      off
       FixedWidth	      off
@@ -3082,7 +3073,7 @@ Model {
 }
 #Finite State Machines
 #
-#   Stateflow 80000009
+#   Stateflow 80000005
 #
 #
 Stateflow {
@@ -3092,7 +3083,7 @@ Stateflow {
     created		    "27-Nov-2014 22:17:09"
     isLibrary		    0
     firstTarget		    2
-    sfVersion		    80000009
+    sfVersion		    80000005
   }
   target {
     id			    2
