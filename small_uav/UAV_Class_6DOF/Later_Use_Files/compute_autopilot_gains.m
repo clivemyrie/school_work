@@ -60,12 +60,12 @@ P.pitch_kd = (2*zeta_pitch*omega_n_theta - models.a_theta1)/models.a_theta3;
 P.K_theta_DC = P.pitch_kp*models.a_theta3/(models.a_theta2 + P.pitch_kp*models.a_theta3);
 
 %% select gains for altitude loop
-zeta_h = 1.1;
-W_h = 30;
-omega_n_h = omega_n_theta/W_h;
-P.altitude_kp = 2*zeta_h*omega_n_h/P.K_theta_DC/P.Va0;
-P.altitude_ki = omega_n_h*omega_n_h/P.K_theta_DC/P.Va0;
-P.altitude_kd = 0.0;
+zeta_h = 1.1
+W_h = 30
+omega_n_h = omega_n_theta/W_h
+P.altitude_kp = 2*zeta_h*omega_n_h/P.K_theta_DC/P.Va0
+P.altitude_ki = omega_n_h*omega_n_h/P.K_theta_DC/P.Va0
+P.altitude_kd = 0.0
 
 %% airspeed hold using pitch
 W_V2 = 40;

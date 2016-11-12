@@ -81,13 +81,13 @@ delta_a = PIR_roll_hold(phi_c, phi_hat, p_hat, firstTime, P);
 
 
 
-%if(mod(time, 20)<10)
-%    h_c = 50;
-%    Va_c = 13;
-%else
-%    h_c = 51;
-%    Va_c = 16;
-%end
+if(mod(time, 20)<10)
+    h_c = 50;
+    Va_c = 13;
+else
+    h_c = 51;
+    Va_c = 16;
+end
 
 
 %Va_c = 13;

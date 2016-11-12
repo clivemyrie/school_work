@@ -29,11 +29,8 @@ xlabel('time, s'); ylabel('elevator deflection, deg')
 grid on
 title('Problem 3, Part D - Elevator Deflection')
 
-kp = P.pitch_kp
-ki = P.pitch_ki
-kd = P.pitch_kd
-k_dc = P.K_theta_DC
-
-ss_pitch = 20*P.K_theta_DC
+kp = P.altitude_kp
+ki = P.altitude_ki
+kd = P.altitude_kd
 
 end
