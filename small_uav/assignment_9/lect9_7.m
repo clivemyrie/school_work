@@ -7,7 +7,7 @@ load_uavsim
 %%
 % Waypoints
 wp_east = [0 400 500 500 0]; %m
-wp_north = [100 200 300 500 600]; %m
+wp_north = [100 100 300 500 300]; %m
 wp_alt = [50 60 90 90 60]; %m
 wp_speed = [13 13 13 16 16]; %m/s
 

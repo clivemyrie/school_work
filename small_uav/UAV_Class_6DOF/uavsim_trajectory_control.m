@@ -67,14 +67,14 @@ end
 
 % Waypoints
 wp_east = [0 400 500 500 0]; %m
-wp_north = [100 200 300 500 600]; %m
+wp_north = [100 100 300 500 300]; %m
 wp_alt = [50 60 90 90 60]; %m
 wp_speed = [13 13 13 16 16]; %m/s
 
 %disp('=======================================')
 %disp(['time ' num2str(time)])
 %disp(['idx ' num2str(curr_wpt_idx)])
-dist_to_wpt = sqrt((pn-wp_north(curr_wpt_idx))^2 + (pe-wp_east(curr_wpt_idx))^2)
+dist_to_wpt = sqrt((pn-wp_north(curr_wpt_idx))^2 + (pe-wp_east(curr_wpt_idx))^2);
 
 if(dist_to_wpt <=20)
     curr_wpt_idx = curr_wpt_idx + 1;

@@ -160,6 +160,11 @@ function uavsim_logging(uu,P)
         out.airspeed_pitot_mps(i) = estimates(4);
         out.roll_est_deg(i) = mod(estimates(5)*180/pi+180,360)-180; % Limit: -180 to 180
         out.pitch_est_deg(i) = estimates(6)*180/pi;
+        
+        out.p_est_dps = estimates(8);
+        out.q_est_dps = estimates(9);
+        out.r_est_dps = estimates(10);
+        out.yaw_est_deg = wrapTo180(estimates(7));
     end
     
     % For profiling purposes
